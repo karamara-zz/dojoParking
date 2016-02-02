@@ -1,0 +1,17 @@
+{% extends "parking_spot/search.html" %}
+{% block result%}
+	<p class = 'red-text text-accent-4'>This Vehicle is not registered in the database.</p>
+{% endblock result %}
+{% block warning %}
+	<br>
+	<form action="{% url 'parking_warning' %}" method='post'>
+	{%  csrf_token %}
+	<input type="hidden" name = 'plate_number' value ='{{plate_number}}'>
+	<input type="hidden" name='warning_given' value = '{{warnings|length}}'>
+	<button class ='btn red accent-4'>Give Warning</button>
+	</form>
+	<p>Warning given: {{warnings|length}} </p>
+	{% for warning in warnings %}
+	<p class = 'red-text text-accent-4'>Warnings Given at: {{warning.created_at}}</p>
+	{% endfor %}
+{% endblock warning%}

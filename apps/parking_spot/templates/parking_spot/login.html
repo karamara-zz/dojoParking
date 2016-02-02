@@ -1,15 +1,25 @@
 {% extends "parking_spot/base.html" %}
 {% block title %}Coding Dojo Seattle Parking Login{% endblock %}
 {% block header %}
-				<a href="{% url 'parking_sign_up' %}" class = 'col s3 offset-m6 m2 l1 offset-l10 offset-s2'>Sign Up</a>
-				<a href="{% url 'parking_index' %}" class='col s3 l1 m2'>Search</a>
+	{% if not user.username %}
+		<div class = 'col s3 offset-m6 m2 l1 offset-l8 offset-s5'>
+			<a href="{% url 'parking_sign_up' %}" >Sign Up</a>
+		</div>
+		<div class='col s3 l1 m2'>
+			<a href="{% url 'parking_index' %}">Search</a>
+		</div>
+	{% else %}
+		<div class = 'col s3 m2 l2 offset-l8 offset s-8 offset-m8'>
+			<a href="{% url 'parking_logout' %}">Sign out</a>
+		</div>
+	{% endif %}
 {% endblock %}
 {% block content %}
-			<div class = 'col s8 m4 l4 offset-s2 offset-m4 offset-l4' id = 'login'>
+			<div class = 'col s8 m4 l4 offset-s2 offset-m4 offset-l4' id = 'login' >
 				<form action="{% url 'parking_sign_in' %}" method = 'post'>
 					{% csrf_token %}
 					{{form}}
-					<button class='btn pull-right' type='submit'>Sign in</button>
+					<button class='btn light-blue darken-1' type='submit'>Sign in</button>
 				</form>
 			</div>
 {% endblock %}

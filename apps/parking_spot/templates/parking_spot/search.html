@@ -1,15 +1,33 @@
 {% extends "parking_spot/base.html" %}
 {% block title %}Coding Dojo Seattle Parking{% endblock %}
 {% block header %}
-				<a href="{% url 'parking_sign_up' %}" class = 'col s3 offset-m6 m2 l1 offset-l10 offset-s2'>Sign Up</a>
-				<a href="{% url 'parking_sign_in' %}" class='col s3 l1 m2'>Sign In</a>
-{% endblock %}
+	{% if not user.username %}
+		<div class = 'col s3 offset-m6 m2 l1 offset-l8 offset-s5'>
+			<a href="{% url 'parking_sign_up' %}" >Sign Up</a>
+		</div>
+		<div class='col s3 l1 m2'>
+			<a href="{% url 'parking_sign_in' %}">Sign In</a>
+		</div>
+	{% else %}
+		<div class = 'col s3 offset-m6 m2 l1 offset-l8 offset-s5'>
+			<a href="{% url 'parking_logout' %}">Sign out</a>
+		</div>
+		<div class='col s3 l1 m2'>
+			<a href="/user/{{user.id}}">Vehicles</a>
+		</div>
+	{% endif %}
+{% endblock header %}
 {% block content %}
 			<div class = 'col s8 m4 l4 offset-s2 offset-m4 offset-l4' id = 'login'>
-				<form action="">
+				<div>{% block result%}{% endblock result %}</div>
+				<form action="{% url 'parking_index' %}" method = "post">
 					{% csrf_token %}
 					{{SearchForm}}
-					<button class='btn pull-right' type='submit'>Search</button>
+					<button class='btn light-blue darken-1' type='submit'>Search</button>
 				</form>
+				<div>
+				{% block warning %}
+				{% endblock warning %}
+				</div>
 			</div>
-{% endblock %}
+{% endblock content %}

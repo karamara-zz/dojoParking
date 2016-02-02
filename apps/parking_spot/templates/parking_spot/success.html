@@ -1,0 +1,7 @@
+{% extends "parking_spot/search.html" %}
+{% block result%}
+	<p class = 'green-text'>This Vehicle is registered in Database</p>
+{% if is_staff == True %}
+	<h3 class = 'green-text'>Staff</h3>
+{% endif %}
+{% endblock %}
