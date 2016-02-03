@@ -1,0 +1,32 @@
+.capital{
+	text-transform: uppercase;
+}
+	.capital input{
+		text-transform: uppercase;
+	}
+.errorlist{
+	color: darkred;
+}
+
+input:focus {
+border-bottom: 1px solid #039be5 !important;
+box-shadow: 0 1px 0 0 #039be5 !important;
+}
+
+	#header a{
+		color:white;
+	}
+.location{
+	color: grey;
+}
+body{
+	background: #eceff1;
+}
+.container{
+	padding-bottom: 600px;
+	background: white;
+}
+.row{
+	margin : 0px !important;
+
+}
