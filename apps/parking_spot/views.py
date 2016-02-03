@@ -33,10 +33,10 @@ class Warning(View):
 	def post(self, request):
 		plate = request.POST['plate_number']
 		print int(request.POST['warning_given'])
-		if not int(request.POST['warning_given']) == 0:
-			print "warning is given before"
+		try:
 			BL = BlackList.objects.get(plate_number = plate)
-		else:
+			print "warning is given before"
+		except:
 			BL = BlackList.objects.create(plate_number = plate)
 		warn = Warnings.objects.create(black_list = BL, reported_by = request.user)
 		BL.save()
