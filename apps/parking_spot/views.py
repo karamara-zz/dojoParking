@@ -32,8 +32,8 @@ class Index(View):
 class Warning(View):
 	def post(self, request):
 		plate = request.POST['plate_number']
-		print request.POST['warning_given']
-		if not request.POST['warning_given'] == 0:
+		print int(request.POST['warning_given'])
+		if not int(request.POST['warning_given']) == 0:
 			print "warning is given before"
 			BL = BlackList.objects.get(plate_number = plate)
 		else:

@@ -1,0 +1,24 @@
+description "Gunicorn application server handling dojoParking"
+start on runlevel [2345]
+stop on runlevel [!2345]
+respawn
+setuid ubuntu
+setgid www-data
+chdir /home/ubuntu/dojoParking
+exec venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/dojoParking/parkingDojo.sock parkingDojo.wsgi:application
+
+
+
+
+server {
+    listen 80;
+    server_name 54.191.254.196;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/ubuntu/dojoParking;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/dojoParking/parkingDojo.sock;
+    }
+}

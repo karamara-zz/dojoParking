@@ -26,6 +26,9 @@ body{
 	padding-bottom: 600px;
 	background: white;
 }
+th, td{
+	text-align: center;
+}
 .row{
 	margin : 0px !important;
 
