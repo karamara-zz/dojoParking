@@ -2,28 +2,28 @@
 {% block title %}Coding Dojo Seattle Parking{% endblock %}
 {% block header %}
 	{% if not user.username %}
-		<div class = 'col s3 offset-m6 m2 l1 offset-l8 offset-s5'>
+		<div class = 'col s6 m3 l6 offset-m4'>
 			<a href="{% url 'parking_sign_up' %}" >Sign Up</a>
 		</div>
-		<div class='col s3 l1 m2'>
+		<div class='col s6 l6 m3'>
 			<a href="{% url 'parking_sign_in' %}">Sign In</a>
 		</div>
 	{% else %}
-		<div class = 'col s3 offset-m6 m2 l1 offset-l8 offset-s5'>
+		<div class = 'col s6 m3 l6 offset-m4'>
 			<a href="{% url 'parking_logout' %}">Sign out</a>
 		</div>
-		<div class='col s3 l1 m2'>
+		<div class='col s6 l6 m3'>
 			<a href="/user/{{user.id}}">Vehicles</a>
 		</div>
 	{% endif %}
 {% endblock header %}
 {% block content %}
-			<div class = 'col s8 m4 l4 offset-s2 offset-m4 offset-l4' id = 'login'>
+			<div class = 'col s12 m12 l4 offset-l4' id = 'login'>
 				<div>{% block result%}{% endblock result %}</div>
 				<form action="{% url 'parking_index' %}" method = "post">
 					{% csrf_token %}
 					{{SearchForm}}
-					<button class='btn light-blue darken-1' type='submit'>Search</button>
+					<button class='btn col s12 m12 light-blue darken-1' type='submit'>Search</button>
 				</form>
 				<div>
 				{% block warning %}

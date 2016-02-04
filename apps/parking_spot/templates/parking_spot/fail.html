@@ -8,7 +8,8 @@
 	{%  csrf_token %}
 	<input type="hidden" name = 'plate_number' value ='{{plate_number}}'>
 	<input type="hidden" name='warning_given' value = '{{warnings|length}}'>
-	<button class ='btn red accent-4'>Give Warning</button>
+	<br>
+	<button class ='btn col s12 m12 red accent-4'>Give Warning</button>
 	</form>
 	<p>Warning given: {{warnings|length}} </p>
 	{% for warning in warnings %}
