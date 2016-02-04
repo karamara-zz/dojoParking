@@ -29,6 +29,8 @@ class Index(View):
 					content['warnings'] = warnings
 				content['plate_number'] = plate
 				return render(request, 'parking_spot/fail.html', content)
+		else:
+			return render(request, 'parking_spot/search.html', {'SearchForm': form, 'title':'Search'})
 class Warning(View):
 	def post(self, request):
 		plate = request.POST['plate_number']

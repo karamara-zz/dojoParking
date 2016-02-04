@@ -1,6 +1,14 @@
 @media only screen and (max-width: 992px) {
 
-   body , label{ font-size: 1.2em; }
+   body , label, input{ font-size: 1.8em !important; }
+   td input{
+   		font-size: 1em !important;
+   }
+   button{
+   		font-size: 3em;
+   		height: 1.8em !important;
+   		margin-bottom: 1em;
+   }
 
 }
 .capital{
