@@ -25,6 +25,7 @@ class Vehicle(models.Model):
 		return self.make
 	class Meta:
 		db_table = 'vehicles'
+		
 class BlackList(models.Model):
 	plate_number = models.CharField(max_length=10)
 	created_at = models.DateField(default = timezone.now)

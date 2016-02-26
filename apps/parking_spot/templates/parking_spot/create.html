@@ -17,6 +17,7 @@
 {% block content %}
 			<div class = 'col s12 m12 l6 offset-l3' id = 'login'>
 				<form action="{% url 'parking_sign_up' %}" method="post">
+					<p class = 'red-text text-darken-4'>*Use @codingdojo.com if you are a staff</p>
 					{% csrf_token %}
 					{{SignUpForm.as_p}}
 					<button class='btn  light-blue darken-1' type='submit'>Sign up</button>

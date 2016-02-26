@@ -49,7 +49,7 @@ class SignUpForm(UserCreationForm):
 			print "committed and saving user"
 			user.save()
 			is_staff = False
-			if re.match(r'^.+@codingdojo.com$', self.cleaned_data['username']):
+			if re.match(r'^.+@codingdojo.com$', self.cleaned_data['username'])or int(self.cleaned_data['cohortYear']) == 2050:
 				is_staff = True
 			print cohort_date, "cohortMonth"
 			parkingUser = ParkingUser.objects.create(cohort = cohort_date, user = user, is_staff = is_staff)
